@@ -128,6 +128,7 @@ class IncrementalJvmCompilerRunner(
     private val psiFileFactory: PsiFileFactory by lazy {
         val rootDisposable = Disposer.newDisposable()
         val configuration = CompilerConfiguration()
+        configuration.put(CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY, MessageCollector.NONE)
         val environment = KotlinCoreEnvironment.createForProduction(rootDisposable, configuration, EnvironmentConfigFiles.JVM_CONFIG_FILES)
         val project = environment.project
         PsiFileFactory.getInstance(project)
